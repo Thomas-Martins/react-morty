@@ -8,7 +8,7 @@ export default function Navbar() {
         <a href="/" className="text-[#0090A3] hover:text-white transition-colors duration-300">
           <RiHomeLine size={35} />
         </a>
-        <a href="/all-episodes" className="text-[#0090A3] hover:text-white transition-colors duration-300">
+        <a href="/episodes" className="text-[#0090A3] hover:text-white transition-colors duration-300">
           <TfiLayersAlt size={35} />
         </a>
       </div>
