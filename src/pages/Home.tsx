@@ -1,5 +1,3 @@
-import EpisodeCard from "../components/EpisodeCard";
-
 export default function Home() {
   return (
     <main className="relative h-full flex-1 ">
@@ -19,11 +17,7 @@ export default function Home() {
             <h1 className="text-white text-2xl underline underline-offset-4 decoration-[#00B2CA] font-bold">LASTS EPISODES</h1>
           </div>
           {/* div cards */}
-          <div className="grid md:grid-cols-2 md:gap-5 lg:gap-7 xl:grid-cols-3">
-            <EpisodeCard />
-            <EpisodeCard />
-            <EpisodeCard />
-          </div>
+          <div className="grid md:grid-cols-2 md:gap-5 lg:gap-7 xl:grid-cols-3">CARDS</div>
         </div>
       </div>
     </main>

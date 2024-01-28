@@ -1,18 +1,70 @@
+import { useEffect, useState } from "react";
 import { IoMdMale } from "react-icons/io";
+import { IoFemale } from "react-icons/io5";
+import { useParams } from "react-router-dom";
+import { useEpisode } from "../../service/queries";
 
 export default function Episode() {
+  const { id } = useParams();
+  const episodeQuery = useEpisode(id);
+  const [charactersInfo, setCharactersInfo] = useState<any[]>([]);
+  useEffect(() => {
+    const fetchCharactersInfo = async () => {
+      if (episodeQuery.data && episodeQuery.data.characters) {
+        const charactersUrls = episodeQuery.data.characters;
+
+        const characters = charactersUrls.map(async (characterUrl: string) => {
+          const response = await fetch(characterUrl, {
+            method: "GET",
+          });
+          const data = await response.json();
+          return data;
+        });
+
+        const charactersData: any = await Promise.all(characters);
+
+        // Obtenir une sélection aléatoire de personnages
+        const randomCharacters = getRandomCharacters(charactersData);
+
+        setCharactersInfo(randomCharacters);
+      }
+    };
+
+    const getRandomCharacters = (array: any[]) => {
+      const newArray = [...array];
+      for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+      }
+      return newArray.slice(0, 5);
+    };
+
+    console.log(charactersInfo);
+
+    fetchCharactersInfo();
+  }, [episodeQuery.data]);
+
+  if (episodeQuery.isPending) {
+    return <div>Loading...</div>;
+  }
+
+  if (episodeQuery.isError) {
+    return <div>Error!</div>;
+  }
+
+  const episodeInfo = episodeQuery.data;
   return (
     <main className="relative h-full flex-1 bg-[#4F4F4F] text-white ">
       <div className="px-8 md:px-16 max-w-screen-xl mx-auto">
         {/* div informations episode */}
         <div className="mt-24">
-          <h1 className="underline underline-offset-2 decoration-[#00B2CA] font-bold text-2xl">The Ricklantis Mixup</h1>
+          <h1 className="underline underline-offset-2 decoration-[#00B2CA] font-bold text-2xl">{episodeInfo?.name}</h1>
           <div className="md:grid md:grid-cols-3 md:gap-10 ">
             <img src="../public/images/test.jpg" alt="thumbnail" className="mt-6 md:h-[270px] object-cover" />
             <div className="grid gap-5 mt-6 md:gap-2 md:grid-rows-6">
-              <p className="border-b border-[#00B2CA] ">Episode : S03E07</p>
-              <p className="border-b border-[#00B2CA] ">Release date : September 10, 2017</p>
-              <p className="border-b border-[#00B2CA] ">Characters: 12</p>
+              <p className="border-b border-[#00B2CA] ">Episode : {episodeInfo?.episode}</p>
+              <p className="border-b border-[#00B2CA] ">Release date : {episodeInfo?.air_date}</p>
+              <p className="border-b border-[#00B2CA] ">Characters: {episodeInfo?.characters.length}</p>
             </div>
           </div>
         </div>
@@ -21,12 +73,16 @@ export default function Episode() {
           <h1 className="text-center underline underline-offset-2 decoration-[#00B2CA] font-bold text-2xl lg:text-left">
             5 Characters in the episode
           </h1>
-          <div className="mt-8">
-            <img src="../public/images/test.jpg" alt="characters" />
-            <div className="flex items-center">
-              <p className="mr-5">Morty Smith </p>
-              <IoMdMale />
-            </div>
+          <div className="sm:flex-wrap md:flex md:justify-between">
+            {charactersInfo.map((character: any) => (
+              <div className="mt-8" key={character.id}>
+                <img src={character.image} alt="character" className=" w-[187px] h-[194px] mx-auto rounded-md " />
+                <div className="flex items-center justify-center">
+                  <p className="mr-5">{character.name}</p>
+                  {character.gender === "Male" ? <IoMdMale /> : <IoFemale />}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

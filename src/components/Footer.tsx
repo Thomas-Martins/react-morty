@@ -9,7 +9,7 @@ export default function Footer() {
           <p className="text-center">RICK AND MORTY DB | ALL RIGHTS RESERVED</p>
           <div className="flex justify-around mt-6 lg:mt-0 lg:gap-8">
             <a href="/">HOME</a>
-            <a href="/all-episodes">EPISODES</a>
+            <a href="/episodes">EPISODES</a>
           </div>
         </div>
       </div>

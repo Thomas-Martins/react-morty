@@ -1,6 +1,13 @@
+import { Link } from "react-router-dom";
 import Button from "./common/button";
 
-export default function EpisodeCard() {
+interface EpisodeCardProps {
+  title: string;
+  episode: string;
+  release: string;
+  episodeId: string;
+}
+const EpisodeCard: React.FC<EpisodeCardProps> = ({ title, episode, release, episodeId }) => {
   return (
     <>
       <div className="mt-8 gap-30 overflow-x-auto">
@@ -11,18 +18,20 @@ export default function EpisodeCard() {
               <img src="../public/images/thumbnail.jpg" alt="thumbnail" className="w-full h-full object-cover" />
             </div>
             <div className="absolute bottom-0 left-0 right-0 text-white z-10 flex items-end justify-between  w-full px-4 pb-4 mt">
-              <div>
-                <h2 className="text-xl font-bold">S01E01</h2>
-                <p className="font-semibold">The Ricklantis Mixup</p>
-                <p className="text-xs">Release: September 10, 2017</p>
+              <div className="">
+                <h2 className="text-xl font-bold">{episode}</h2>
+                <p className="font-semibold">{title}</p>
+                <p className="text-xs">{release}</p>
               </div>
-              <a href="/episode/:id">
+              <Link to={`${episodeId}`}>
                 <Button label="See more" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
       </div>
     </>
   );
-}
+};
+
+export default EpisodeCard;
