@@ -1,6 +1,19 @@
+import { motion } from "framer-motion";
+import EpisodeCard from "../components/EpisodeCard";
+import { useEpisodes } from "../service/queries";
+
 export default function Home() {
+  const episodesQuery = useEpisodes();
+  const latestEpisodes = episodesQuery?.data?.slice(-3);
+
   return (
-    <main className="relative h-full flex-1 ">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="relative h-full flex-1 "
+    >
       <div className="absolute h-full w-full brightness-[0.25]">
         <img src="../public/images/pxfuel.jpg" alt="background" className="w-full h-full object-cover" />
       </div>
@@ -17,9 +30,26 @@ export default function Home() {
             <h1 className="text-white text-2xl underline underline-offset-4 decoration-[#00B2CA] font-bold">LASTS EPISODES</h1>
           </div>
           {/* div cards */}
-          <div className="grid md:grid-cols-2 md:gap-5 lg:gap-7 xl:grid-cols-3">CARDS</div>
+          {episodesQuery.isLoading && <div className="text-white">"Chargement en cours"</div>}
+          {episodesQuery.isError ? (
+            <div className="text-white">"Un problème est survenu"</div>
+          ) : (
+            <div className="grid md:grid-cols-2 md:gap-5 lg:gap-7 xl:grid-cols-3">
+              {latestEpisodes?.map((episode: any) => (
+                <motion.div
+                  initial={{ scaleX: 0, scaleY: 0 }}
+                  animate={{ scaleX: 1, scaleY: 1 }}
+                  exit={{ scaleX: 0, scaleY: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="transition-transform duration-500 transform hover:scale-105"
+                >
+                  <EpisodeCard key={episode.id} title={episode.name} episode={episode.episode} release={episode.air_date} episodeId={episode.id} />
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
-    </main>
+    </motion.div>
   );
 }

@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import EpisodeCard from "../../components/EpisodeCard";
 import PaginationButtons from "../../components/PaginationButtons";
@@ -21,16 +22,18 @@ export default function Episodes() {
     return <div>Loading...</div>;
   }
 
-  if (episodesQuery.isError) {
-    return <div>Error!</div>;
-  }
-
   return (
-    <main className="relative h-full flex-1 bg-[#4F4F4F]">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="relative h-full flex-1 bg-[#4F4F4F]"
+    >
       <div className="h-full w-full overflow-hidden">
         <div className="relative">
-          <div className="absolute w-full max-h-[291px] bg-[#00B2CA] bg-opacity-45"></div>
-          <div className="absolute bottom-0 left-0 p-8 text-white z-10">
+          <div className="absolute w-full h-full z-10 bg-[#00B2CA] bg-opacity-45"></div>
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 p-8 text-white z-50 w-full max-w-screen-xl ">
             <p className="text-xl font-bold underline underline-offset-4 decoration-[#00B2CA]">ALL EPISODES</p>
           </div>
           <img src="../public/images/episodes_background.jpg" alt="logo" className="brightness-[0.85] object-cover w-full max-h-[291px]" />
@@ -41,9 +44,16 @@ export default function Episodes() {
         {/* div cards */}
         <div className="mb-10 grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:gap-7 xl:grid-cols-3" style={{ minHeight: "452px" }}>
           {currentEpisodes?.map((episode: any) => (
-            <div key={episode.id} className="transition-transform duration-500 transform hover:scale-105">
+            <motion.div
+              initial={{ scaleX: 0, scaleY: 0 }}
+              animate={{ scaleX: 1, scaleY: 1 }}
+              exit={{ scaleX: 0, scaleY: 0 }}
+              transition={{ duration: 0.3 }}
+              key={episode.id}
+              className="transition-transform duration-500 transform hover:scale-105"
+            >
               <EpisodeCard key={episode.id} title={episode.name} episode={episode.episode} release={episode.air_date} episodeId={episode.id} />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -51,6 +61,6 @@ export default function Episodes() {
       <div className="flex justify-center my-4">
         <PaginationButtons currentPage={currentPage} pageCount={pageCount} setCurrentPage={setCurrentPage} />
       </div>
-    </main>
+    </motion.div>
   );
 }

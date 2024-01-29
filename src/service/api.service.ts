@@ -1,7 +1,7 @@
 import { Episode } from "../types";
 import { Episodes } from "../types/episodes";
 
-const BASE_URL = "https://rickandmortyapi.com/api";
+const BASE_URL = "https://rickandmortyapi.com/ap";
 
 const GET = async (endpoint: string) => {
   try {
@@ -31,7 +31,7 @@ const GET = async (endpoint: string) => {
 
     return allResults;
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 };
 

@@ -35,7 +35,7 @@ const renderPaginationButtons = ({ currentPage, pageCount, setCurrentPage }: Pag
   };
 
   return (
-    <div className="flex items-center">
+    <div>
       {currentPage > 1 && (
         <button
           onClick={() => setCurrentPage(currentPage - 1)}
