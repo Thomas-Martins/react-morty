@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { MoonLoader } from "react-spinners";
 import EpisodeCard from "../../components/EpisodeCard";
 import PaginationButtons from "../../components/PaginationButtons";
 import { useEpisodes } from "../../service/queries";
@@ -17,10 +18,6 @@ export default function Episodes() {
     // Scroll to the top of the page when changing the page
     window.scrollTo(0, 0);
   }, [currentPage]);
-
-  if (episodesQuery.isPending) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <motion.div
@@ -41,6 +38,11 @@ export default function Episodes() {
       </div>
       {/* content */}
       <div className="relative px-8 max-w-screen-xl mx-auto xl:px-14 xl:py-10">
+        {episodesQuery.isLoading && (
+          <div className="flex justify-center items-center">
+            <MoonLoader color="#00B2CA" size={100} />
+          </div>
+        )}
         {/* div cards */}
         <div className="mb-10 grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:gap-7 xl:grid-cols-3" style={{ minHeight: "452px" }}>
           {currentEpisodes?.map((episode: any) => (

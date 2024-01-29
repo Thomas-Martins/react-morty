@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { MoonLoader } from "react-spinners";
 import EpisodeCard from "../components/EpisodeCard";
 import { useEpisodes } from "../service/queries";
 
@@ -29,10 +30,15 @@ export default function Home() {
           <div className="mt-7 text-center md:text-left lg:mt-12">
             <h1 className="text-white text-2xl underline underline-offset-4 decoration-[#00B2CA] font-bold">LASTS EPISODES</h1>
           </div>
+          {/* Loader */}
+          {episodesQuery.isLoading && (
+            <div className="flex justify-center items-center h-[500px]">
+              <MoonLoader color="#00B2CA" size={100} />
+            </div>
+          )}
           {/* div cards */}
-          {episodesQuery.isLoading && <div className="text-white">"Chargement en cours"</div>}
           {episodesQuery.isError ? (
-            <div className="text-white">"Un problème est survenu"</div>
+            <div className="text-white mt-4 text-2xl">"Un problème est survenu"</div>
           ) : (
             <div className="grid md:grid-cols-2 md:gap-5 lg:gap-7 xl:grid-cols-3">
               {latestEpisodes?.map((episode: any) => (

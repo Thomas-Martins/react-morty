@@ -58,7 +58,7 @@ export default function Episode() {
       <div className="px-8 md:px-16 max-w-screen-xl mx-auto">
         {/* div informations episode */}
         <div className="mt-24">
-          <h1 className="underline underline-offset-2 decoration-[#00B2CA] font-bold text-2xl">{episodeInfo?.name}</h1>
+          <h1 className="underline underline-offset-8 decoration-[#00B2CA] font-bold text-2xl">{episodeInfo?.name}</h1>
           <div className="md:grid md:grid-cols-3 md:gap-10 ">
             <img src="../public/images/test.jpg" alt="thumbnail" className="mt-6 md:h-[270px] object-cover" />
             <div className="grid gap-5 mt-6 md:gap-2 md:grid-rows-6">
@@ -70,7 +70,7 @@ export default function Episode() {
         </div>
         {/* div characters in episode */}
         <div className="mt-14">
-          <h1 className="text-center underline underline-offset-2 decoration-[#00B2CA] font-bold text-2xl lg:text-left">
+          <h1 className="text-center underline underline-offset-8 decoration-[#00B2CA] font-bold text-2xl lg:text-left">
             5 Characters in the episode
           </h1>
           <div className="sm:flex-wrap md:flex md:justify-between">
