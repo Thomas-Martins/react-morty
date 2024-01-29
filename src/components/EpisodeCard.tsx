@@ -15,15 +15,15 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({ title, episode, release, epis
           <div className="relative border-4 border-[#00B2CA] overflow-hidden rounded-lg h-[180px]">
             <div className="absolute w-full h-full bg-[#00B2CA] bg-opacity-40 z-10"></div>
             <div className="absolute w-full h-full">
-              <img src="../public/images/thumbnail.jpg" alt="thumbnail" className="w-full h-full object-cover" />
+              <img src="../public/images/thumbnail.jpg" alt="thumbnail" className="w-full h-full object-cover brightness-75" />
             </div>
-            <div className="absolute bottom-0 left-0 right-0 text-white z-10 flex items-end justify-between  w-full px-4 pb-4 mt">
+            <div className="absolute bottom-0 left-0 right-0 text-white z-10 flex items-end justify-between w-full px-4 pb-4 mt">
               <div className="">
                 <h2 className="text-xl font-bold">{episode}</h2>
-                <p className="font-semibold">{title}</p>
+                <p className="font-semibold w-[200px]">{title}</p>
                 <p className="text-xs">{release}</p>
               </div>
-              <Link to={`${episodeId}`}>
+              <Link to={`/episodes/${episodeId}`}>
                 <Button label="See more" />
               </Link>
             </div>

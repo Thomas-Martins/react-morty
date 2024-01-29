@@ -31,7 +31,7 @@ const GET = async (endpoint: string) => {
 
     return allResults;
   } catch (error) {
-    console.error(error);
+    throw error;
   }
 };
 
