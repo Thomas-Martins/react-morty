@@ -16,11 +16,11 @@ export default function Home() {
       className="relative h-full flex-1 "
     >
       <div className="absolute h-full w-full brightness-[0.25]">
-        <img src="../public/images/pxfuel.jpg" alt="background" className="w-full h-full object-cover" />
+        <img src="../public/images/home_bg.jpg" alt="background" className="w-full h-full object-cover" />
       </div>
       {/* content */}
       <div className="relative px-8 py-28 max-w-screen-xl mx-auto xl:px-14 xl:py-44 ">
-        {/* DIv logo */}
+        {/* div logo */}
         <div className="w-[280px] mx-auto md:mx-0 md:w-[404px]">
           <img src="../public/images/logo.png" alt="logo" />
         </div>
