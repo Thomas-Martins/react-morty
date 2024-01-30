@@ -20,7 +20,7 @@ export default function Home() {
       </div>
       {/* content */}
       <div className="relative px-8 py-28 max-w-screen-xl mx-auto xl:px-14 xl:py-44 ">
-        {/* DIv logo */}
+        {/* div logo */}
         <div className="w-[280px] mx-auto md:mx-0 md:w-[404px]">
           <img src="../public/images/logo.png" alt="logo" />
         </div>

@@ -1,55 +1,51 @@
 # CAS PRATIQUE REACT - REACT MORTY
 
-## INSTALLATION
+## Introduction
 
-```bash
-git clone https://github.com/William29302/react-morty-starter.git
-cd react-morty-starter
-npm install
-npm run dev
-```
+Ce projet a été développé en utilisant React, conforme aux spécifications mobiles et desktop fournies dans la maquette. Le choix de conception, les étapes de développement et les outils utilisés sont détaillés ci-dessous.
 
-## Cas Pratique : Développement d'une Application React consommant l'API Rick et Morty
+## Analyse et Préparation
 
-## Objectif
+1. **Analyse de la Maquette :**
 
-Développer une application React utilisant le starter fourni, consommant l'API publique de Rick et Morty. L'application doit être responsive, utiliser React-Query pour gérer les requêtes API et mettre en place le routing.
+   - Le projet a débuté par une analyse approfondie de la maquette, couvrant à la fois les versions mobile et desktop.
 
-## Instructions
+2. **Ressources :**
 
-En utilisant le starter fourni et en suivant le design fourni, développez une application React qui répond aux points suivants :
+   - Les assets nécessaires, tels que les images et les polices, ont été rassemblés pour garantir une intégration fidèle à la maquette.
 
-1. **API Rick et Morty :**
+3. **Choix Techniques :**
 
-   - Consommez l'API publique de Rick et Morty pour afficher des informations sur les personnages & épisodes.
+   - Framework : React a été choisi, conformément aux directives.
+   - Styling : Tailwind CSS a été utilisé pour la simplicité, bien que SCSS aurait pu être une alternative, compte tenu des contraintes de temps.
 
-2. **Responsive Design :**
+4. **Contraintes :**
 
-   - Assurez-vous que l'application soit responsive, permettant une expérience utilisateur optimale sur différentes tailles d'écrans.
+   - La principale contrainte était le temps, en particulier en raison de l'apprentissage parallèle de TypeScript et React-query, qui n'était pas maîtrisé au début du projet.
 
-3. **React-Query :**
+## Développement
 
-   - Utilisez React-Query pour gérer les requêtes API et cachez les requêtes au moyen de cette bibliothèque.
+1. **Intégration de la Maquette :**
 
-4. **Routing :**
+   - La maquette mobile a été intégrée en premier, suivie de son adaptation pour la version desktop, en suivant une approche "mobile first".
+   - La structure de l'application a été divisée en plusieurs pages : Home, Episodes, et Episode.
 
-   - Mettez en place le routing pour permettre la navigation entre les différentes pages de l'application.
+2. **Composants Réutilisables :**
 
-5. **Pagination :**
-   - Mettez en place la pagination pour l'affichage progressif des épisodes ( j'ai choisi une api qui facilite la tâche d'intégration de la pagination, ne me remerciez pas :p ).
+   - Pour garantir la maintenabilité et la lisibilité du code, des composants tels que Button, EpisodeCard, Footer, Navbar, et un composant de pagination ont été créés.
 
-## Livraison
+3. **Gestion des Données et API :**
 
-Soumettez votre app sous forme de lien vers un repository GitHub, accompagné d'un fichier README expliquant votre approche, les choix de conception, et les étapes pour exécuter l'application localement. Supprimer le .git ( fichier invisible pour délier le projet et le connecter à votre propre repository ). Pensez à ajouter les node_modules dans le gitignore.
+   - Étude de l'API : Compréhension approfondie de l'API et de ses fonctionnalités.
+   - Récupération des Épisodes : En raison de la pagination API (20 éléments par page), les données ont été récupérées pour gérer la pagination avec 6 épisodes par page.
+   - Détails des Épisodes : En utilisant les IDs des épisodes, une requête spécifique a été effectuée pour obtenir tous les détails d'un épisode.
 
-# Informations complémentaires
+4. **Optimisations :**
 
-J'ai préparé un starter mais si vous souhaitez modifier la structure du projet, vous pouvez le faire, Organisez vous comme bon vous semble.
+   - Utilisation de React Query (Tanstack Query) pour la gestion du cache et éviter les requêtes inutiles.
+   - Intégration de framer-motion pour des transitions fluides entre les composants.
+   - Utilisation de react-icons pour les icônes et react-spinners pour un loader de chargement.
 
-Vous pouvez également utiliser un framework CSS tels que TailwindCSS ou un préprocesseurs tels que SASS.
+## Conclusion
 
-Vous pouvez utiliser les icônes SVG de votre choix, ou utiliser une bibliothèque telle que React-Icons.
-
-[API RICK & MORTY](https://rickandmortyapi.com/documentation/#rest)
-
-N'hésitez pas à me contacter si vous avez des questions. Bon courage, impatients de voir votre travail !
+Ce projet a été une opportunité d'apprendre et d'appliquer divers concepts React tout en respectant les spécifications du client. Les choix de conception et les outils utilisés ont été guidés par une approche pragmatique pour relever les défis liés aux contraintes de temps et aux exigences du projet.
