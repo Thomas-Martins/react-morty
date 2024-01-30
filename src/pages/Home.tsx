@@ -47,9 +47,10 @@ export default function Home() {
                   animate={{ scaleX: 1, scaleY: 1 }}
                   exit={{ scaleX: 0, scaleY: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="transition-transform duration-500 transform hover:scale-105"
                 >
-                  <EpisodeCard key={episode.id} title={episode.name} episode={episode.episode} release={episode.air_date} episodeId={episode.id} />
+                  <div className="transition-transform duration-500 transform hover:scale-105">
+                    <EpisodeCard key={episode.id} title={episode.name} episode={episode.episode} release={episode.air_date} episodeId={episode.id} />
+                  </div>
                 </motion.div>
               ))}
             </div>

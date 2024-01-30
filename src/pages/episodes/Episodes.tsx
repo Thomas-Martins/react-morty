@@ -64,10 +64,11 @@ export default function Episodes() {
                 exit={{ scaleX: 0, scaleY: 0 }}
                 transition={{ duration: 0.3 }}
                 key={episode.id}
-                className="transition-transform duration-500 transform hover:scale-105"
               >
                 {/* Composant EpisodeCard pour chaque épisode */}
-                <EpisodeCard key={episode.id} title={episode.name} episode={episode.episode} release={episode.air_date} episodeId={episode.id} />
+                <div className="transition-transform duration-500 transform hover:scale-105">
+                  <EpisodeCard key={episode.id} title={episode.name} episode={episode.episode} release={episode.air_date} episodeId={episode.id} />
+                </div>
               </motion.div>
             ))}
           </div>
