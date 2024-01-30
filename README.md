@@ -49,3 +49,5 @@ Ce projet a été développé en utilisant React, conforme aux spécifications m
 ## Conclusion
 
 Ce projet a été une opportunité d'apprendre et d'appliquer divers concepts React tout en respectant les spécifications du client. Les choix de conception et les outils utilisés ont été guidés par une approche pragmatique pour relever les défis liés aux contraintes de temps et aux exigences du projet.
+
+[SITE](https://react-morty-thomas.netlify.app/)
