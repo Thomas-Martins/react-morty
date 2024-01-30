@@ -43,21 +43,24 @@ export default function Episodes() {
             <MoonLoader color="#00B2CA" size={100} />
           </div>
         )}
+        {episodesQuery.isError && <div className="text-white mt-4 text-2xl">"Un problème est survenu"</div>}
         {/* div cards */}
-        <div className="mb-10 grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:gap-7 xl:grid-cols-3" style={{ minHeight: "452px" }}>
-          {currentEpisodes?.map((episode: any) => (
-            <motion.div
-              initial={{ scaleX: 0, scaleY: 0 }}
-              animate={{ scaleX: 1, scaleY: 1 }}
-              exit={{ scaleX: 0, scaleY: 0 }}
-              transition={{ duration: 0.3 }}
-              key={episode.id}
-              className="transition-transform duration-500 transform hover:scale-105"
-            >
-              <EpisodeCard key={episode.id} title={episode.name} episode={episode.episode} release={episode.air_date} episodeId={episode.id} />
-            </motion.div>
-          ))}
-        </div>
+        {episodesQuery.isSuccess && (
+          <div className="mb-10 grid grid-cols-1 md:grid-cols-2 md:gap-5 lg:gap-7 xl:grid-cols-3" style={{ minHeight: "452px" }}>
+            {currentEpisodes?.map((episode: any) => (
+              <motion.div
+                initial={{ scaleX: 0, scaleY: 0 }}
+                animate={{ scaleX: 1, scaleY: 1 }}
+                exit={{ scaleX: 0, scaleY: 0 }}
+                transition={{ duration: 0.3 }}
+                key={episode.id}
+                className="transition-transform duration-500 transform hover:scale-105"
+              >
+                <EpisodeCard key={episode.id} title={episode.name} episode={episode.episode} release={episode.air_date} episodeId={episode.id} />
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
       {/* Pagination with dynamic display */}
       <div className="flex justify-center my-4">
