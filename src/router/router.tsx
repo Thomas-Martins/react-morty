@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
 import Home from "../pages/Home";
 import Episode from "../pages/episodes/Episode";
 import Episodes from "../pages/episodes/Episodes";
@@ -7,7 +6,10 @@ import Episodes from "../pages/episodes/Episodes";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    lazy: async () => {
+      let { App } = await import("../App");
+      return { Component: App };
+    },
     children: [
       {
         path: "/",

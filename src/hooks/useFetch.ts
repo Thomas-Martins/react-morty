@@ -14,7 +14,7 @@ const useFetch = async (url: string) => {
         // Conversion de la réponse en JSON et renvoi du résultat
         return response.json();
       })
-      .catch((e) => {
+      .catch(() => {
         // Gestion des erreurs
         throw new Error("Erreur lors de la requête");
       });
