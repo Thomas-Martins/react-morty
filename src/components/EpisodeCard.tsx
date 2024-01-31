@@ -9,7 +9,7 @@ interface EpisodeCardProps {
 }
 const EpisodeCard: React.FC<EpisodeCardProps> = ({ title, episode, release, episodeId }) => {
   return (
-    <>
+    <Link to={`/episodes/${episodeId}`}>
       <div className="mt-8 gap-30 overflow-x-auto">
         <div className="flex-shrink-0 w-full max-w-[calc(33.3333% - 60px)]">
           <div className="relative border-4 border-[#00B2CA] overflow-hidden rounded-lg h-[180px]">
@@ -23,14 +23,14 @@ const EpisodeCard: React.FC<EpisodeCardProps> = ({ title, episode, release, epis
                 <p className="font-semibold w-[200px]">{title}</p>
                 <p className="text-xs">{release}</p>
               </div>
-              <Link to={`/episodes/${episodeId}`}>
+              <div>
                 <Button label="See more" />
-              </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </Link>
   );
 };
 
